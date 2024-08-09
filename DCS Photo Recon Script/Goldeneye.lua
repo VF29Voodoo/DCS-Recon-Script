@@ -927,7 +927,7 @@ function reconEventHandler:onEvent(event)
 		return
 	end
 	
-	if world.event.S_EVENT_TAKEOFF == event.id then --takeoff event enables recon flights and updates/creates recon instances
+	if world.event.S_EVENT_TAKEOFF == event.id or world.event.S_EVENT_RUNWAY_TAKEOFF == event.id then --takeoff event enables recon flights and updates/creates recon instances
 		local instance
 		
 		if recon.checkIfRecon(event.initiator) then
@@ -967,7 +967,7 @@ function reconEventHandler:onEvent(event)
 		return
 	end
 	
-	if world.event.S_EVENT_LAND == event.id then --return values if its a recon plane and lands near a friendly base
+	if world.event.S_EVENT_LAND == event.id or world.event.S_EVENT_RUNWAY_TOUCH == event.id then --return values if its a recon plane and lands near a friendly base
 		local instance
 		if recon.reconTypes[event.initiator:getTypeName()] then
 			
